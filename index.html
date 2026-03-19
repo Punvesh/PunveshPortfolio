@@ -68,7 +68,7 @@ nav{
   font-size:1.5rem;letter-spacing:.08em;color:var(--hot);
 }
 .nav-id span{color:var(--ink);font-size:.9rem;letter-spacing:.02em}
-.nav-r{display:flex;gap:2rem;align-items:center}
+.nav-r{display:flex;gap:1.5rem;align-items:center}
 .nav-r a{
   color:var(--muted);font-size:.65rem;
   letter-spacing:.18em;text-transform:uppercase;text-decoration:none;transition:color .2s;
@@ -82,6 +82,19 @@ nav{
   font-weight:700;font-size:.75rem!important;letter-spacing:.14em;
 }
 .nav-hire:hover{background:var(--hot);color:var(--bg)!important}
+
+/* ── RESUME DOWNLOAD BUTTON (nav) ── */
+.nav-resume{
+  display:inline-flex;align-items:center;gap:.4rem;
+  padding:.4rem 1rem;
+  border:1px solid var(--dim);
+  color:var(--muted)!important;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:.72rem!important;letter-spacing:.12em;
+  text-decoration:none;transition:border-color .2s,color .2s;
+}
+.nav-resume:hover{border-color:var(--hot);color:var(--hot)!important}
+.nav-resume svg{flex-shrink:0}
 
 /* HERO */
 #hero{
@@ -171,7 +184,7 @@ nav{
 .stat-item{text-align:right}
 .stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:var(--hot);line-height:1}
 .stat-lbl{font-size:.6rem;color:var(--muted);letter-spacing:.14em;text-transform:uppercase}
-.hero-cta-row{display:flex;gap:1rem}
+.hero-cta-row{display:flex;gap:1rem;flex-wrap:wrap}
 .cta-main{
   padding:.7rem 2rem;background:var(--hot);color:var(--bg);
   font-family:'Barlow Condensed',sans-serif;
@@ -186,6 +199,28 @@ nav{
   text-decoration:none;transition:border-color .2s,color .2s;
 }
 .cta-sec:hover{border-color:var(--ink);color:var(--ink)}
+
+/* ── RESUME DOWNLOAD BUTTON (hero) ── */
+.cta-resume{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.7rem 1.8rem;
+  border:1px solid var(--hot);
+  color:var(--hot);
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;
+  transition:background .2s,color .2s;
+  position:relative;overflow:hidden;
+}
+.cta-resume::before{
+  content:'';position:absolute;inset:0;
+  background:var(--hot);transform:translateX(-101%);
+  transition:transform .28s ease;z-index:0;
+}
+.cta-resume:hover::before{transform:translateX(0)}
+.cta-resume:hover{color:var(--bg)}
+.cta-resume>*{position:relative;z-index:1}
+.cta-resume svg{flex-shrink:0}
 
 /* TICKER */
 .ticker-wrap{
@@ -336,6 +371,17 @@ nav{
 .c-link>*{position:relative;z-index:1}
 .c-icon{font-size:1.1rem;width:32px;text-align:center}
 .c-meta .lbl{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;opacity:.5;margin-bottom:.1rem}
+
+/* ── RESUME DOWNLOAD BUTTON (contact) ── */
+.c-link.resume-dl{
+  border-color:var(--hot);
+  background:transparent;
+}
+.c-link.resume-dl .c-icon{color:var(--hot)}
+.c-link.resume-dl::before{background:var(--hot)}
+.c-link.resume-dl:hover .c-icon{color:var(--bg)}
+.c-link.resume-dl:hover{color:var(--bg)}
+
 .avail-card{padding:2.5rem;border:1px solid var(--line);position:relative}
 .avail-card::before{
   content:'OPEN TO WORK';position:absolute;top:-1px;left:2rem;
@@ -358,7 +404,7 @@ footer .f-logo{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--
 
 @media(max-width:768px){
   nav{padding:.8rem 1.2rem}
-  .nav-r a:not(.nav-hire){display:none}
+  .nav-r a:not(.nav-hire):not(.nav-resume){display:none}
   #hero{padding:6rem 1.2rem 3rem}
   .hero-bottom{grid-template-columns:1fr}
   .hero-right{align-items:flex-start}
@@ -376,6 +422,7 @@ footer .f-logo{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--
 <div id="cur"></div>
 <div id="curT"></div>
 
+<!-- ── NAV — resume button added here ── -->
 <nav>
   <div class="nav-id">PP<span> / DevOps</span></div>
   <div class="nav-r">
@@ -383,6 +430,15 @@ footer .f-logo{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--
     <a href="#exp">Experience</a>
     <a href="#proj">Projects</a>
     <a href="#skills">Skills</a>
+    <!-- ★ RESUME BUTTON #1 — NAV BAR -->
+    <a href="punvesh_resume.pdf" download="Punvesh_P_Resume.pdf" class="nav-resume">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="7 10 12 15 17 10"/>
+        <line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+      Resume
+    </a>
     <a href="#contact" class="nav-hire">Hire Me</a>
   </div>
 </nav>
@@ -427,6 +483,15 @@ footer .f-logo{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--
       <div class="hero-cta-row">
         <a href="#proj" class="cta-main">View Projects</a>
         <a href="https://www.linkedin.com/in/p-punvesh-devops" target="_blank" class="cta-sec">LinkedIn ↗</a>
+        <!-- ★ RESUME BUTTON #2 — HERO SECTION -->
+        <a href="punvesh_resume.pdf" download="Punvesh_P_Resume.pdf" class="cta-resume">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download CV
+        </a>
       </div>
     </div>
   </div>
@@ -605,6 +670,17 @@ footer .f-logo{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--
         <a href="https://www.linkedin.com/in/p-punvesh-devops" target="_blank" class="c-link rv">
           <span class="c-icon">in</span>
           <div class="c-meta"><div class="lbl">LinkedIn</div><div>p-punvesh-devops</div></div>
+        </a>
+        <!-- ★ RESUME BUTTON #3 — CONTACT SECTION -->
+        <a href="punvesh_resume.pdf" download="Punvesh_P_Resume.pdf" class="c-link resume-dl rv">
+          <span class="c-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+          </span>
+          <div class="c-meta"><div class="lbl">Resume</div><div>Download PDF — Punvesh_P_Resume.pdf</div></div>
         </a>
       </div>
     </div>
